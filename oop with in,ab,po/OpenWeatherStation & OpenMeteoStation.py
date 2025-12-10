@@ -2,10 +2,11 @@
 # this file contains inheritance, polymorphism, abstraction without encapsulation
  
 
-import requests
 import pprint
+from abc import ABC, abstractmethod
 
-from abc import ABC,abstractmethod
+import requests
+
 
 class WeatherAbstract(ABC):
     def __init__(self,latitude,longitude):
@@ -64,9 +65,6 @@ class OpenMeteoStation(WeatherAbstract):
         relative_humidity = client.get_current_temp_hum()['current']['relative_humidity_2m']
         return f"temperature: {temperature} , relative_humidity: {relative_humidity}"
 
-# client = OpenMeteoStation(52.52, 13.41)
-# client.display_forecast()
-# print(client.display_current())   
 
     
 class OpenWeatherStation(WeatherAbstract):
@@ -117,90 +115,8 @@ class OpenWeatherStation(WeatherAbstract):
         return f"current_temp: {temperature} , current_humidity: {humidity}"
 
         
-
-        
-# client = OpenWeatherStation(52.52, 13.41)
-# # client.display_forecast()
-# # print(client.display_current())   
-
-# client1 = OpenWeatherStation(52.52, 13.41)
-# print(client1.display_current()) 
-# client2 = OpenMeteoStation(52.52, 13.41)
-# print(client2.display_current())   
-
-
-    
-######################OpenMeteoStation##################################################################  
-# Weather_OpenMeteoStation = OpenMeteoStation(52.52, 13.41)
-# print('OpenMeteoStation.....')
-# print(Weather_OpenMeteoStation.get_forecast_temp_hum())
-# time = Weather_OpenMeteoStation.get_forecast_temp_hum()['hourly']['time']
-# print('time: ',time)
-# temperature = Weather_OpenMeteoStation.get_forecast_temp_hum()['hourly']['temperature_2m']
-# print('temperature: ',temperature)
-# relative_humidity = Weather_OpenMeteoStation.get_forecast_temp_hum()['hourly']['relative_humidity_2m']
-# print('relative_humidity: ',relative_humidity)
-# for index,Weather in enumerate(time):
-    # print(index,'time: ',time[index],"_",'temperature: ',temperature[index],"_",'relative_humidity: ',relative_humidity[index])
-#############################################################################################################
-# Weather_OpenMeteoStation = OpenMeteoStation(52.52, 13.41)
-# print('OpenMeteoStation.....')
-# temperature = Weather_OpenMeteoStation.get_current_temp_hum()['current']['temperature_2m']
-# print('temperature: ',temperature)
-# relative_humidity = Weather_OpenMeteoStation.get_current_temp_hum()['current']['relative_humidity_2m']
-# print('relative_humidity: ',relative_humidity)
-###############################################################################################################
-
-
-
-
-###################### OpenWeatherStation #########################  
-# Weather_OpenWeatherStation = OpenWeatherStation(52.52, 13.41)
-# # data = Weather_OpenWeatherStation.get_forecast_temp_hum()['list'][0]
-# data = Weather_OpenWeatherStation.get_forecast_temp_hum()['list']
-# # print(data)
-# for item, day in enumerate(data):
-#     print(item,"-",'forecast_time:',data[item]['dt_txt'],"-",'forecast_temp:',
-#           data[item]['main']['temp'],"-",'forecast_humidity:',data[item]['main']['humidity'])
-  
-# print(data[1]['dt_txt'])
-# my_printer = pprint.PrettyPrinter(width=20)
-# my_printer.pprint(temp['dt_txt'])
-# print('forecast_day: ',data['dt_txt'])
-# print('forecast_temp: ',data['main']['temp'])
-# print('forecast_humidity: ',data['main']['humidity'])
-
-
-#####################################################################  
-# Weather_OpenWeatherStation = OpenWeatherStation(52.52, 13.41)
-# print("Weather_OpenWeatherStation....")
-# temp = Weather_OpenWeatherStation.get_current_temp_hum()['main']['temp']
-# print('current_temp: ',temp)
-
-# humidity = Weather_OpenWeatherStation.get_current_temp_hum()['main']['humidity']
-# print('current_humidity: ',humidity)
-
 latitude = 52.52
 longitude = 13.41
 client = OpenMeteoStation(latitude,longitude)
 for   client.display_current()in client :
     client.display_current()
-
-
-# if __name__ == "__main__":
-#     latitude = 52.52
-#     longitude = 13.41
-#     client = None
-#     print('''
-#           1) OpenMeteo
-#           2) OpenWeather
-#           ''')
-#     chosen_provider = input("choose your provider:")
-#     if chosen_provider == "1":
-#         client = OpenMeteoStation(latitude,longitude)
-#         print(client.display_current())
-#         client.display_forecast()
-#     if chosen_provider == "2":
-#         client = OpenWeatherStation(latitude,longitude)
-#         print(client.display_current())
-#         client.display_forecast()
